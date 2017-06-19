@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WorkspaceDatabase fileContentsEncoding="UTF-8" options="3" version="2.0">
+<File m="ex_simplerestclienttester" n="../base/client/ex_simplerestclienttester.4gl" ts="">
+<Fct c="1" el="51" l="23" n="main()" t="F">
+<Call c="9" l="25" n="fillCustomerData" t="F"/>
+<Call c="12" l="31" n="putCustomer" t="F"/>
+<Call c="12" l="34" n="putCustomer" t="F"/>
+<Call c="12" l="37" n="postCustomer" t="F"/>
+<Call c="12" l="40" n="deleteCustomer" t="F"/>
+<Call c="11" l="43" n="getThisFile" t="F"/>
+</Fct>
+<Fct c="10" el="115" l="85" n="postCustomer()" t="F"/>
+<Fct c="10" el="83" l="53" n="putCustomer()" t="F"/>
+<Fct c="10" el="145" l="117" n="deleteCustomer()" t="F"/>
+<Fct c="10" el="163" l="147" n="fillCustomerData()" t="F"/>
+<Fct c="10" el="200" l="165" n="getThisFile()" t="F"/>
+</File>
+<File m="accounts" n="../base/server/lib/accounts.4gl" ts="">
+<Dep t="../base/server/lib/logs.4gl"/>
+<Dep t="../base/server/lib/global.4gl"/>
+<Fct c="10" el="230" l="228" n="getJSONEncoding()" t="F"/>
+<Fct c="10" el="137" l="92" n="insertAccount(thisData STRING)" t="F"/>
+<Fct c="10" el="84" l="59" n="queryAccountById()" t="F">
+<Call c="26" l="76" n="getJSONEncoding" t="F"/>
+</Fct>
+<Fct c="10" el="208" l="190" n="deleteAccountById(id VARCHAR(10))" t="F"/>
+<Fct c="10" el="181" l="147" n="updateAccountsById(thisData STRING)" t="F"/>
+<Fct c="10" el="50" l="26" n="getAllAccounts()" t="F">
+<Call c="26" l="42" n="getJSONEncoding" t="F"/>
+</Fct>
+<Fct c="10" el="218" l="216" n="init()" t="F"/>
+<Todo l="129" t=" needs to be JSON formatted ?"/>
+<Todo l="173" t=" needs to be JSON formatted ?"/>
+<Todo l="200" t=" needs to be JSON formatted ?"/>
+</File>
+<File m="dbase" n="../base/server/lib/dbase.4gl" ts="20170329164925000">
+<Fct c="17" el="39" l="30" n="DBConnect()" t="F"/>
+<Fct c="17" el="58" l="53" n="DBDisconnect()" t="F"/>
+</File>
+<File m="global" n="../base/server/lib/global.4gl" ts="20170503141031000"/>
+<File m="logs" n="../base/server/lib/logs.4gl" ts="20170331172448000">
+<Fct c="18" el="61" l="45" n="mkdir_recursive(path STRING)" t="F">
+<Call c="13" l="56" n="mkdir_recursive" t="F"/>
+</Fct>
+<Fct c="17" el="146" l="122" n="LOG_EVENT(cat INTEGER,class STRING,ev STRING,msg STRING)" t="F"/>
+<Fct c="17" el="98" l="80" n="LOG_INIT(lvl STRING,path STRING,f STRING)" t="F">
+<Call c="12" l="89" n="mkdir_recursive" t="F"/>
+</Fct>
+</File>
+<File m="ex_simplerestserver" n="../base/server/src/ex_simplerestserver.4gl" ts="">
+<Dep t="../base/server/lib/logs.4gl"/>
+<Dep t="../base/server/lib/dbase.4gl"/>
+<Dep t="../base/server/lib/global.4gl"/>
+<Dep t="../base/server/lib/accounts.4gl"/>
+<Fct c="1" el="66" l="30" n="main()" t="F">
+<Call c="15" l="33" n="LOG_INIT" p="../base/server/lib/logs.4gl" t="F"/>
+<Call c="15" l="35" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+<Call c="18" l="38" n="DBConnect" p="../base/server/lib/dbase.4gl" t="F"/>
+<Call c="17" l="39" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+<Call c="15" l="43" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+<Call c="17" l="52" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+<Call c="12" l="54" n="MarshallRequest" t="F"/>
+<Call c="16" l="63" n="DBDisconnect" p="../base/server/lib/dbase.4gl" t="F"/>
+<Call c="15" l="64" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+</Fct>
+<Fct c="10" el="204" l="161" n="ProcessRestAccounts(thismethod STRING,thisid STRING)" t="F">
+<Call c="23" l="172" n="getAllAccounts" p="../base/server/lib/accounts.4gl" t="F"/>
+<Call c="23" l="174" n="queryAccountById" p="../base/server/lib/accounts.4gl" t="F"/>
+<Call c="23" l="179" n="insertAccount" p="../base/server/lib/accounts.4gl" t="F"/>
+<Call c="23" l="188" n="updateAccountsById" p="../base/server/lib/accounts.4gl" t="F"/>
+<Call c="23" l="195" n="deleteAccountById" p="../base/server/lib/accounts.4gl" t="F"/>
+</Fct>
+<Fct c="10" el="146" l="90" n="MarshallRequest()" t="F">
+<Call c="13" l="133" n="ProcessRestAccounts" t="F"/>
+<Call c="9" l="144" n="send_response" t="F"/>
+</Fct>
+<Fct c="10" el="225" l="206" n="send_response()" t="F"/>
+</File>
+<File m="overview" n="../base/server/src/overview.4gl" ts="20170324165837000">
+<Todo l="3" t=" Not a full implementation by any means"/>
+</File>
+</WorkspaceDatabase>

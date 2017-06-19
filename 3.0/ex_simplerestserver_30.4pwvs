@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WorkspaceViewState version="1.0">
+  <ExpandedNodes>
+    <Node path="/ex_simplerestserver_30.4pw" type="pm/main-project"/>
+    <Node path="/ex_simplerestserver_30.4pw/libraries" type="pm/group"/>
+    <Node path="/ex_simplerestserver_30.4pw/libraries/accounts" type="pm/library"/>
+    <Node path="/ex_simplerestserver_30.4pw/libraries/global" type="pm/library"/>
+    <Node path="/ex_simplerestserver_30.4pw/server" type="pm/group"/>
+    <Node path="/ex_simplerestserver_30.4pw/server/config" type="pm/library"/>
+    <Node path="/ex_simplerestserver_30.4pw/server/ex_simplerestserver" type="pm/application"/>
+    <Node path="/ex_simplerestserver_30.4pw/server/SimpleRESTsrv" type="pm/package"/>
+  </ExpandedNodes>
+  <OpenDocuments>
+    <Document filePath="../base/server/lib/accounts.4gl" locator="195:5:195:10" module="mod-ce3"/>
+    <Document filePath="../base/server/src/ex_simplerestserver.4gl" locator="195:49:195:49" module="mod-ce3"/>
+    <Document filePath="cfg/SimpleRESTsrv.xcf" locator="5:41:5:41" module="mod-ce3"/>
+  </OpenDocuments>
+  <CurrentDocument filePath="cfg/SimpleRESTsrv.xcf" module="mod-ce3"/>
+</WorkspaceViewState>
