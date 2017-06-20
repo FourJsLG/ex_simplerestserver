@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WorkspaceViewState version="1.0">
+  <ExpandedNodes>
+    <Node path="ex_simplerestserver_31.4pw" type="pm/main-project"/>
+    <Node path="ex_simplerestserver_31.4pw/client" type="pm/group"/>
+    <Node path="ex_simplerestserver_31.4pw/libraries" type="pm/group"/>
+    <Node path="ex_simplerestserver_31.4pw/libraries/accounts" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/libraries/dbase" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/libraries/global" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/libraries/logs" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/server" type="pm/group"/>
+    <Node path="ex_simplerestserver_31.4pw/server/config" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/server/database" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/server/SimpleRESTsrv" type="pm/package"/>
+  </ExpandedNodes>
+  <OpenDocuments/>
+</WorkspaceViewState>

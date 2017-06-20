@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPLICATION xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Parent="ws.default" xsi:noNamespaceSchemaLocation="http://www.4js.com/ns/gas/3.00/cfextws.xsd">
+  <EXECUTION>
+    <PATH>$(res.deployment.path)</PATH>
+    <MODULE>ex_simplerestserver</MODULE>
+    <ACCESS_CONTROL>
+      <ALLOW_FROM>$(res.access.control)</ALLOW_FROM>
+    </ACCESS_CONTROL>
+    <POOL>
+      <START>0</START>
+      <MIN_AVAILABLE>0</MIN_AVAILABLE>
+      <MAX_AVAILABLE>1</MAX_AVAILABLE>
+    </POOL>
+  </EXECUTION>
+</APPLICATION>
