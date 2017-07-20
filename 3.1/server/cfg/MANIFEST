@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MANIFEST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.4js.com/ns/gas/3.00/mf.xsd">
-  <DESCRIPTION>Contains SimpleRESTsrv</DESCRIPTION>
+<MANIFEST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.4js.com/ns/gas/3.10/mf.xsd">
+  <DESCRIPTION>Contains ex_simplerestserver</DESCRIPTION>
   <!--<TRIGGERS component="component_name">
     <DEPLOY>deploy_command</DEPLOY>
     <UNDEPLOY>undeploy_command</UNDEPLOY>
   </TRIGGERS>
   <RESOURCES>resources_directory</RESOURCES>-->
-  <SERVICE xcf="SimpleRESTsrv.xcf" />
+  <SERVICE xcf="SimpleREST.xcf" />
 </MANIFEST>

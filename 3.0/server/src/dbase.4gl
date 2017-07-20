@@ -27,6 +27,7 @@ PRIVATE CONSTANT C_DATABASE = "officestore"
 #+ @returnType BOOLEAN
 #+ @return TRUE/FALSE
 #+
+
 PUBLIC FUNCTION DBConnect()
   # Connect to DB
   TRY

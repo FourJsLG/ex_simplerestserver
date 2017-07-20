@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="1894085285" gstVersion="30020" version="3.1">
+<Project defaultApplication="573051280" gstVersion="30020" version="3.1">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -53,48 +53,48 @@
   </Settings>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group label="client" language="Genero">
+  <Group label="client" language="Genero" targetDirectory="$(ProjectDir)/client/bin">
     <Application binaryName="ex_simplerestclienttester" id="573051280" label="ex_simplerestclienttester">
-      <File filePath="../base/client/ex_simplerestclienttester.4gl"/>
+      <File filePath="client/ex_simplerestclienttester.4gl"/>
+      <File filePath="client/ex_simplerestclienttester.per"/>
     </Application>
   </Group>
-  <Group environment="dirlist:DBPATH=$(DBPATH):$(ProjectDir)/../base/server/db||filelist:FGLPROFILE=$(ProjectDir)/../base/server/cfg/ex_simplerestserver.fglprofile||dirlist:FGLDBPATH=$(ProjectDir)/db" label="libraries" language="Genero">
+  <Group environment="dirlist:DBPATH=$(DBPATH):$(ProjectDir)/server/db||filelist:FGLPROFILE=$(ProjectDir)/server/cfg/ex_simplerestserver.fglprofile||dirlist:FGLDBPATH=$(ProjectDir)/server/db" label="libraries" language="Genero" targetDirectory="$(ProjectDir)/server/bin">
     <Library binaryName="accounts" dependencies="-1687499413||-1965714616||1767398320||550150615" id="1857450426" label="accounts">
-      <File filePath="../base/server/lib/accounts.4gl"/>
+      <File filePath="server/src/accounts.4gl"/>
     </Library>
     <Library binaryName="dbase" id="550150615" label="dbase">
-      <File filePath="../base/server/lib/dbase.4gl"/>
+      <File filePath="server/src/dbase.4gl"/>
     </Library>
     <Library binaryName="global" id="-1965714616" label="global">
-      <File filePath="../base/server/lib/global.4gl"/>
+      <File filePath="server/src/global.4gl"/>
     </Library>
     <Library binaryName="logs" id="1767398320" label="logs">
-      <File filePath="../base/server/lib/logs.4gl"/>
-      <File filePath="bin/log/SimpleRESTServer.log"/>
+      <File filePath="server/src/logs.4gl"/>
     </Library>
   </Group>
-  <Group label="server" language="Genero">
-    <Library binaryName="config" id="1079946484" label="config" targetDirectory="$(ProjectDir)/cfg">
-      <File filePath="../base/server/cfg/ex_simplerestserver.fglprofile"/>
-      <File filePath="cfg/MANIFEST"/>
-      <File filePath="cfg/SimpleRESTsrv.xcf"/>
+  <Group label="server" language="Genero" targetDirectory="$(ProjectDir)/server/bin">
+    <Library binaryName="config" id="1079946484" label="config" targetDirectory="$(ProjectDir)/server/cfg">
+      <File filePath="server/cfg/ex_simplerestserver.fglprofile"/>
+      <File filePath="server/cfg/MANIFEST"/>
     </Library>
-    <Library binaryName="database" id="-1687499413" label="database" targetDirectory="$(ProjectDir)/db">
-      <File filePath="db/officestore.4db"/>
-      <File filePath="../base/server/db/officestore.db"/>
+    <Library binaryName="database" id="-1687499413" label="database" targetDirectory="$(ProjectDir)/server/db">
+      <File filePath="server/db/officestore.4db"/>
     </Library>
-    <Application binaryName="ex_simplerestserver" dependencies="-1687499413||1079946484||1767398320||550150615||1857450426||-1965714616" id="1894085285" label="ex_simplerestserver">
-      <File filePath="../base/server/src/ex_simplerestserver.4gl"/>
-      <File filePath="../base/server/src/overview.4gl"/>
+    <Application binaryName="ex_simplerestserver" dependencies="-1687499413||1079946484||1767398320||550150615||1857450426||-1965714616" gasWebService="true" id="1894085285" label="ex_simplerestserver">
+      <File filePath="server/src/ex_simplerestserver.4gl"/>
+      <File filePath="server/src/overview.4gl"/>
     </Application>
-    <Package binaryName="SimpleRESTsrv" description="Contains SimpleRESTsrv" label="SimpleRESTsrv" platform="Genero Application Server">
+    <Package binaryName="SimpleRESTsrv" description="Contains SimpleREST Service" distDirectory="$(ProjectDir)/server/distbin" label="SimpleRESTsrv" platform="Genero Application Server" rootDirectory="$(ProjectDir)/server/bin">
       <DynamicProperty name="packageId" value="SimpleRESTsrv300"/>
       <DynamicProperty name="packageLabel" value="SimpleRESTsrv300"/>
       <DynamicProperty name="packageName" value="SimpleRESTsrv300"/>
-      <Directory destinationDirectory="$(ProjectDir)/bin" label="30_cfg" sourceDirectory="$(ProjectDir)/cfg"/>
-      <Directory destinationDirectory="$(ProjectDir)/bin" label="base_cfg" sourceDirectory="$(ProjectDir)/../base/server/cfg"/>
-      <Directory destinationDirectory="$(ProjectDir)/bin" includedFiles="*.db" label="base_db" sourceDirectory="$(ProjectDir)/../base/server/db"/>
-      <Directory destinationDirectory="$(ProjectDir)/bin" includedFiles="*.42?" label="bin" sourceDirectory="$(ProjectDir)/bin"/>
+      <Directory destinationDirectory="$(ProjectDir)/server/bin" includedFiles="*.42?" label="bin" sourceDirectory="$(ProjectDir)/server/bin"/>
+      <Directory destinationDirectory="$(ProjectDir)/server/bin" label="cfg" sourceDirectory="$(ProjectDir)/server/cfg"/>
+      <Directory destinationDirectory="$(ProjectDir)/server/bin" includedFiles="*.db" label="db" sourceDirectory="$(ProjectDir)/server/db"/>
     </Package>
+    <Library binaryName="xcf" id="2048880976" label="xcf">
+      <File filePath="server/cfg/SimpleREST.xcf"/>
+    </Library>
   </Group>
 </Project>

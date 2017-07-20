@@ -16,6 +16,8 @@ DEFINE request com.HTTPServiceRequest
 DEFINE http_code SMALLINT
 DEFINE http_response STRING
 
+DEFINE _SERVICENAME STRING
+
 #+ Main Function
 #+
 #+ Starts the Service
@@ -44,6 +46,9 @@ MAIN
 
     LET http_code = 0
     LET http_response = NULL
+
+    # ReST service location
+    LET _SERVICENAME=fgl_getenv("FGL_VMPROXY_SESSION_ID")
 
     WHILE TRUE
       # Process each incoming requests (infinite loop)
@@ -171,12 +176,12 @@ FUNCTION ProcessRestAccounts(thismethod, thisid)
       IF thisid IS NULL THEN
         CALL accounts.getAllAccounts() RETURNING retcode, thisresponse
       ELSE
-        CALL accounts.queryAccountById() RETURNING retcode, thisresponse
+        CALL accounts.queryAccountById(thisid) RETURNING retcode, thisresponse
       END IF
 
     WHEN "POST"
-      IF thisid IS NULL THEN
-        CALL accounts.insertAccount("blahblah") RETURNING retcode, thisresponse
+      IF thisid IS NOT NULL THEN
+        CALL accounts.insertAccount(request.readTextRequest()) RETURNING retcode, thisresponse
       ELSE
         LET retcode=HTTP_BAD_REQUEST
       END IF

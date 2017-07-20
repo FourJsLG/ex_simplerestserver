@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <APPLICATION xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Parent="ws.default" xsi:noNamespaceSchemaLocation="http://www.4js.com/ns/gas/3.00/cfextws.xsd">
   <EXECUTION>
+    <ENVIRONMENT_VARIABLE Id="FGLPROFILE">$(res.deployment.path)/ex_simplerestserver.fglprofile</ENVIRONMENT_VARIABLE>
+    <ENVIRONMENT_VARIABLE Id="DBPATH">$(res.deployment.path)</ENVIRONMENT_VARIABLE>
     <PATH>$(res.deployment.path)</PATH>
     <MODULE>ex_simplerestserver</MODULE>
     <ACCESS_CONTROL>

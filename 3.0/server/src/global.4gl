@@ -1,6 +1,3 @@
-# ReST service location
-PUBLIC CONSTANT _SERVICENAME="simplerestserver"
-
 # LogLevel
 PUBLIC CONSTANT _LOGLEVEL="DEBUG"
 

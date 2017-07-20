@@ -5,13 +5,15 @@
     <Node path="ex_simplerestserver_31.4pw/client" type="pm/group"/>
     <Node path="ex_simplerestserver_31.4pw/libraries" type="pm/group"/>
     <Node path="ex_simplerestserver_31.4pw/libraries/accounts" type="pm/library"/>
-    <Node path="ex_simplerestserver_31.4pw/libraries/dbase" type="pm/library"/>
-    <Node path="ex_simplerestserver_31.4pw/libraries/global" type="pm/library"/>
-    <Node path="ex_simplerestserver_31.4pw/libraries/logs" type="pm/library"/>
     <Node path="ex_simplerestserver_31.4pw/server" type="pm/group"/>
     <Node path="ex_simplerestserver_31.4pw/server/config" type="pm/library"/>
-    <Node path="ex_simplerestserver_31.4pw/server/database" type="pm/library"/>
+    <Node path="ex_simplerestserver_31.4pw/server/ex_simplerestserver" type="pm/application"/>
     <Node path="ex_simplerestserver_31.4pw/server/SimpleRESTsrv" type="pm/package"/>
   </ExpandedNodes>
-  <OpenDocuments/>
+  <OpenDocuments>
+    <Document container="true" filePath="client/ex_simplerestclienttester.4gl" locator="72:59" module="mod-ce3">
+      <Data name="8" value="UTF-8"/>
+    </Document>
+  </OpenDocuments>
+  <CurrentDocument filePath="client/ex_simplerestclienttester.4gl" module="mod-ce3"/>
 </WorkspaceViewState>

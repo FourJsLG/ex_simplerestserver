@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <WorkspaceDatabase fileContentsEncoding="UTF-8" version="2.0">
-<File m="ex_simplerestclienttester" n="../base/client/ex_simplerestclienttester.4gl" ts="20170620102221586">
-<Fct c="10" el="200" l="165" n="getThisFile()" t="F"/>
-<Fct c="10" el="163" l="147" n="fillCustomerData()" t="F"/>
-<Fct c="10" el="145" l="117" n="deleteCustomer()" t="F"/>
-<Fct c="10" el="115" l="85" n="postCustomer()" t="F"/>
-<Fct c="10" el="83" l="53" n="putCustomer()" t="F"/>
-<Fct c="1" el="51" l="23" n="main()" t="F">
-<Call c="9" l="25" n="fillCustomerData" t="F"/>
-<Call c="12" l="31" n="putCustomer" t="F"/>
-<Call c="12" l="34" n="putCustomer" t="F"/>
-<Call c="12" l="37" n="postCustomer" t="F"/>
-<Call c="12" l="40" n="deleteCustomer" t="F"/>
-<Call c="11" l="43" n="getThisFile" t="F"/>
+<File m="ex_simplerestclienttester" n="client/ex_simplerestclienttester.4gl" ts="20170720084953895">
+<Fct c="10" el="212" l="196" n="fillCustomerData()" t="F"/>
+<Fct c="10" el="194" l="167" n="deleteCustomer()" t="F"/>
+<Fct c="10" el="165" l="132" n="postCustomer()" t="F"/>
+<Fct c="10" el="130" l="93" n="get_customer_count()" t="F"/>
+<Fct c="10" el="91" l="63" n="start_client_test()" t="F">
+<Call c="67" l="68" n="get_customer_count" t="F"/>
+<Call c="8" l="73" n="fillCustomerData" t="F"/>
+<Call c="13" l="75" n="postCustomer" t="F"/>
+<Call c="85" l="85" n="get_customer_count" t="F"/>
+<Call c="8" l="89" n="deleteCustomer" t="F"/>
+</Fct>
+<Fct c="1" el="61" l="47" n="main()" t="F">
+<Call c="13" l="54" n="start_client_test" t="F"/>
 </Fct>
 </File>
-<File m="accounts" n="../base/server/lib/accounts.4gl" ts="20170620102221630">
-<Dep t="../base/server/lib/global.4gl"/>
-<Dep t="../base/server/lib/logs.4gl"/>
-<Fct c="10" el="230" l="228" n="getJSONEncoding()" t="F"/>
-<Fct c="10" el="218" l="216" n="init()" t="F"/>
-<Fct c="10" el="208" l="190" n="deleteAccountById(id VARCHAR(10))" t="F"/>
-<Fct c="10" el="181" l="147" n="updateAccountsById(thisData STRING)" t="F"/>
-<Fct c="10" el="137" l="92" n="insertAccount(thisData STRING)" t="F"/>
-<Fct c="10" el="84" l="59" n="queryAccountById()" t="F">
-<Call c="26" l="76" n="getJSONEncoding" t="F"/>
+<File m="accounts" n="server/src/accounts.4gl" ts="20170720083452768">
+<Dep t="server/src/global.4gl"/>
+<Dep t="server/src/logs.4gl"/>
+<Fct c="10" el="281" l="279" n="getJSONEncoding()" t="F"/>
+<Fct c="10" el="266" l="264" n="init()" t="F"/>
+<Fct c="10" el="252" l="232" n="deleteAccountById(id STRING)" t="F"/>
+<Fct c="10" el="217" l="183" n="updateAccountsById(thisData STRING)" t="F"/>
+<Fct c="10" el="167" l="120" n="insertAccount(thisData STRING)" t="F"/>
+<Fct c="10" el="105" l="80" n="queryAccountById(id VARCHAR(10))" t="F">
+<Call c="26" l="97" n="getJSONEncoding" t="F"/>
 </Fct>
-<Fct c="10" el="50" l="26" n="getAllAccounts()" t="F">
-<Call c="26" l="42" n="getJSONEncoding" t="F"/>
+<Fct c="10" el="65" l="41" n="getAllAccounts()" t="F">
+<Call c="26" l="57" n="getJSONEncoding" t="F"/>
 </Fct>
-<Todo l="129" t=" needs to be JSON formatted ?"/>
-<Todo l="173" t=" needs to be JSON formatted ?"/>
-<Todo l="200" t=" needs to be JSON formatted ?"/>
+<Todo l="159" t=" needs to be JSON formatted ?"/>
+<Todo l="181" t=" return stat (number of rows updated) as well ?"/>
+<Todo l="209" t=" needs to be JSON formatted ?"/>
+<Todo l="243" t=" needs to be JSON formatted ?"/>
 </File>
-<File m="dbase" n="../base/server/lib/dbase.4gl" ts="20170620102221600">
-<Fct c="17" el="58" l="53" n="DBDisconnect()" t="F"/>
-<Fct c="17" el="39" l="30" n="DBConnect()" t="F"/>
+<File m="dbase" n="server/src/dbase.4gl" ts="20170720080449225">
+<Fct c="17" el="59" l="54" n="DBDisconnect()" t="F"/>
+<Fct c="17" el="40" l="31" n="DBConnect()" t="F"/>
 </File>
-<File m="global" n="../base/server/lib/global.4gl" ts="20170620102221607"/>
-<File m="logs" n="../base/server/lib/logs.4gl" ts="20170620102221560">
+<File m="global" n="server/src/global.4gl" ts="20170720080449289"/>
+<File m="logs" n="server/src/logs.4gl" ts="20170720080449215">
 <Fct c="17" el="146" l="122" n="LOG_EVENT(cat INTEGER,class STRING,ev STRING,msg STRING)" t="F"/>
 <Fct c="17" el="98" l="80" n="LOG_INIT(lvl STRING,path STRING,f STRING)" t="F">
 <Call c="12" l="89" n="mkdir_recursive" t="F"/>
@@ -49,36 +51,36 @@
 <Bug l="72" t="level"/>
 <Bug l="112" t=": logs everything"/>
 </File>
-<File m="ex_simplerestserver" n="../base/server/src/ex_simplerestserver.4gl" ts="20170620102221621">
-<Dep t="../base/server/lib/global.4gl"/>
-<Dep t="../base/server/lib/logs.4gl"/>
-<Dep t="../base/server/lib/dbase.4gl"/>
-<Dep t="../base/server/lib/accounts.4gl"/>
-<Fct c="10" el="225" l="206" n="send_response()" t="F"/>
-<Fct c="10" el="204" l="161" n="ProcessRestAccounts(thismethod STRING,thisid STRING)" t="F">
-<Call c="23" i="accounts" l="172" n="getAllAccounts" p="../base/server/lib/accounts.4gl" t="F"/>
-<Call c="23" i="accounts" l="174" n="queryAccountById" p="../base/server/lib/accounts.4gl" t="F"/>
-<Call c="23" i="accounts" l="179" n="insertAccount" p="../base/server/lib/accounts.4gl" t="F"/>
-<Call c="23" i="accounts" l="188" n="updateAccountsById" p="../base/server/lib/accounts.4gl" t="F"/>
-<Call c="23" i="accounts" l="195" n="deleteAccountById" p="../base/server/lib/accounts.4gl" t="F"/>
+<File m="ex_simplerestserver" n="server/src/ex_simplerestserver.4gl" ts="20170720080449247">
+<Dep t="server/src/global.4gl"/>
+<Dep t="server/src/logs.4gl"/>
+<Dep t="server/src/dbase.4gl"/>
+<Dep t="server/src/accounts.4gl"/>
+<Fct c="10" el="230" l="211" n="send_response()" t="F"/>
+<Fct c="10" el="209" l="166" n="ProcessRestAccounts(thismethod STRING,thisid STRING)" t="F">
+<Call c="23" i="accounts" l="177" n="getAllAccounts" p="server/src/accounts.4gl" t="F"/>
+<Call c="23" i="accounts" l="179" n="queryAccountById" p="server/src/accounts.4gl" t="F"/>
+<Call c="23" i="accounts" l="184" n="insertAccount" p="server/src/accounts.4gl" t="F"/>
+<Call c="23" i="accounts" l="193" n="updateAccountsById" p="server/src/accounts.4gl" t="F"/>
+<Call c="23" i="accounts" l="200" n="deleteAccountById" p="server/src/accounts.4gl" t="F"/>
 </Fct>
-<Fct c="10" el="146" l="90" n="MarshallRequest()" t="F">
-<Call c="13" l="133" n="ProcessRestAccounts" t="F"/>
-<Call c="9" l="144" n="send_response" t="F"/>
+<Fct c="10" el="151" l="95" n="MarshallRequest()" t="F">
+<Call c="13" l="138" n="ProcessRestAccounts" t="F"/>
+<Call c="9" l="149" n="send_response" t="F"/>
 </Fct>
-<Fct c="1" el="66" l="30" n="main()" t="F">
-<Call c="15" i="logs" l="33" n="LOG_INIT" p="../base/server/lib/logs.4gl" t="F"/>
-<Call c="15" i="logs" l="35" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
-<Call c="18" i="dbase" l="38" n="DBConnect" p="../base/server/lib/dbase.4gl" t="F"/>
-<Call c="17" i="logs" l="39" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
-<Call c="15" i="logs" l="43" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
-<Call c="17" i="logs" l="52" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
-<Call c="12" l="54" n="MarshallRequest" t="F"/>
-<Call c="16" i="dbase" l="63" n="DBDisconnect" p="../base/server/lib/dbase.4gl" t="F"/>
-<Call c="15" i="logs" l="64" n="LOG_EVENT" p="../base/server/lib/logs.4gl" t="F"/>
+<Fct c="1" el="71" l="32" n="main()" t="F">
+<Call c="15" i="logs" l="35" n="LOG_INIT" p="server/src/logs.4gl" t="F"/>
+<Call c="15" i="logs" l="37" n="LOG_EVENT" p="server/src/logs.4gl" t="F"/>
+<Call c="18" i="dbase" l="40" n="DBConnect" p="server/src/dbase.4gl" t="F"/>
+<Call c="17" i="logs" l="41" n="LOG_EVENT" p="server/src/logs.4gl" t="F"/>
+<Call c="15" i="logs" l="45" n="LOG_EVENT" p="server/src/logs.4gl" t="F"/>
+<Call c="17" i="logs" l="57" n="LOG_EVENT" p="server/src/logs.4gl" t="F"/>
+<Call c="12" l="59" n="MarshallRequest" t="F"/>
+<Call c="16" i="dbase" l="68" n="DBDisconnect" p="server/src/dbase.4gl" t="F"/>
+<Call c="15" i="logs" l="69" n="LOG_EVENT" p="server/src/logs.4gl" t="F"/>
 </Fct>
 </File>
-<File m="overview" n="../base/server/src/overview.4gl" ts="20170620102221593">
+<File m="overview" n="server/src/overview.4gl" ts="20170720080449281">
 <Todo l="3" t=" Not a full implementation by any means"/>
 </File>
 </WorkspaceDatabase>

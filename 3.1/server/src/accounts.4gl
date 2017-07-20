@@ -1,3 +1,19 @@
+#
+# FOURJS_START_COPYRIGHT(U,2015)
+# Property of Four Js*
+# (c) Copyright Four Js 2015, 2017. All Rights Reserved.
+# * Trademark of Four Js Development Tools Europe Ltd
+#   in the United States and elsewhere
+# 
+# Four Js and its suppliers do not warrant or guarantee that these samples
+# are accurate and suitable for your purposes. Their inclusion is purely for
+# information purposes only.
+# FOURJS_END_COPYRIGHT
+#
+
+#+  DB CRUD operations library functions
+#+
+
 IMPORT util
 IMPORT FGL global
 IMPORT FGL logs
@@ -13,15 +29,14 @@ DEFINE m_accounts DYNAMIC ARRAY OF accountType
 #+ Retrieves all accounts from data source
 #+
 #+ @code
-#+ LET HTTP_CODE=ProcessRestAccounts(requestMethod, res_table, res_id)
+#+ CALL accounts.getAllAccounts() RETURNING retcode, thisresponse
 #+
-#+ @param requestMethod : valid request (GET, POST, PUT, DELETE)
-#+ @param res_table : valid resource table (accounts, items, ...)
-#+ @param res_id : valid resource id (smith, 1, ABC, ...)
+#+ @param NONE
 #+
 #+ @returnType SMALLINT
-#+ @return HTTP_CODE: code to be sent with request response
-#+
+#+ @return retcode : return code (200 or else)
+#+ @returnType STRING
+#+ @return thisresponse: JSON response or NULL
 
 FUNCTION getAllAccounts()
 
@@ -49,14 +64,20 @@ FUNCTION getAllAccounts()
     
 END FUNCTION
 
-################################################################################
-#
-# Method: getAccountById(id)
-#
-# Description: Retrieves account for specific ID from data source
-#
-#
-FUNCTION queryAccountById()
+#+ Method: getAccountById(id)
+#+ Retrieves account for specific ID from data source
+#+
+#+ @code
+#+ CALL accounts.queryAccountById(thisid) RETURNING retcode, thisresponse
+#+
+#+ @param id : valid resource id (smith, 1, ABC, ...)
+#+
+#+ @returnType SMALLINT
+#+ @return retcode : return code (200 or else)
+#+ @returnType STRING
+#+ @return thisresponse: JSON response or NULL
+
+FUNCTION queryAccountById(id)
 
     DEFINE id VARCHAR(10)
     DEFINE i INT
@@ -83,12 +104,19 @@ FUNCTION queryAccountById()
     
 END FUNCTION
 
-################################################################################
-#
-# Method: insertAccount(thisData STRING)
-#
-# Description: Creates account for specific ID from data source
-#
+#+ Method: insertAccount(thisData STRING)
+#+ Creates account for specific ID from data source
+#+
+#+ @code
+#+ CALL accounts.insertAccount("blahblah") RETURNING retcode, thisresponse
+#+
+#+ @param thisData : row to insert in JSON format coming from client program
+#+
+#+ @returnType SMALLINT
+#+ @return retcode : return code (200 or else)
+#+ @returnType STRING
+#+ @return thisresponse: JSON response or NULL
+
 FUNCTION insertAccount(thisData)
     DEFINE thisData    STRING
     DEFINE thisAccount accountType
@@ -100,6 +128,7 @@ FUNCTION insertAccount(thisData)
     LET parseObject = util.JSONObject.parse(thisData)  --> Parse JSON string
     CALL parseObject.toFGL(thisAccount)                --> Put JSON into FGL
 
+    WHENEVER ERROR CONTINUE
     PREPARE acctins FROM
         "INSERT INTO account VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         EXECUTE acctins USING thisAccount.userid,
@@ -122,7 +151,8 @@ FUNCTION insertAccount(thisData)
 
     LET stat = SQLCA.SQLCODE
     FREE acctins
-
+    WHENEVER ERROR STOP
+    
     IF stat = 0 
     THEN
       LET thiscode = HTTP_OK
@@ -136,14 +166,20 @@ FUNCTION insertAccount(thisData)
     
 END FUNCTION
 
-################################################################################
-#
-# Method: updateAccountById(id STRING)
-#
-# Description: Updates account for specific ID in data source
-#
-# Return: stat (number of rows updated)
-#
+#+ Method: updateAccountById(id STRING)
+#+ Updates account for specific ID in data source
+#+
+#+ @code
+#+ CALL accounts.updateAccountsById(thisid) RETURNING retcode, thisresponse
+#+
+#+ @param thisData : row(s) to update in JSON format coming from client program
+#+
+#+ @returnType SMALLINT
+#+ @return retcode : return code (200 or else)
+#+ @returnType STRING
+#+ @return thisresponse: JSON response or NULL
+#+ TODO: return stat (number of rows updated) as well ?
+
 FUNCTION updateAccountsById(thisData)
     DEFINE thisData    STRING
     DEFINE thisAccount accountType
@@ -180,18 +216,25 @@ FUNCTION updateAccountsById(thisData)
     
 END FUNCTION
 
-################################################################################
-#
-# Method: deleteAccountById(id)
-#
-# Description: Deletes account for specific ID from data source
-#
-#
+#+ Method: deleteAccountById(id)
+#+ Deletes account for specific ID from data source
+#+
+#+ @code
+#+ CALL accounts.deleteAccountById(thisid) RETURNING retcode, thisresponse
+#+
+#+ @param id : valid resource id (smith, 1, ABC, ...)
+#+
+#+ @returnType SMALLINT
+#+ @return retcode : return code (200 or else)
+#+ @returnType STRING
+#+ @return thisresponse: JSON response or NULL
+
 FUNCTION deleteAccountById(id)
-    DEFINE id VARCHAR(10)
+    DEFINE id STRING
     DEFINE thiscode SMALLINT
     DEFINE thisresponse STRING
-    
+
+    WHENEVER ERROR CONTINUE
     DELETE FROM account WHERE userid = id 
 
     IF SQLCA.SQLCODE = 0 
@@ -202,29 +245,37 @@ FUNCTION deleteAccountById(id)
       LET thiscode = HTTP_BAD_REQUEST
       LET thisresponse = NULL
     END IF
-
+    WHENEVER ERROR CONTINUE
+    
     RETURN thiscode, thisresponse 
     
 END FUNCTION
 
-################################################################################
-#
-# Method: init()
-#
-# Description: Initializes the account array
-#
+#+ Method: init()
+#+ Initializes the account array
+#+
+#+ @code
+#+ 
+#+ @param NONE
+#+
+#+ @returnType NONE
+#+ @return NONE
+
 FUNCTION init()
     CALL m_accounts.clear()
 END FUNCTION
 
-################################################################################
-#
-# Method: getJSONEncoding()
-#
-# Description: Encodes the current(modular) object as JSON string
-#
-# Returns: JSON encoded string
-#
+#+ Method: getJSONEncoding()
+#+ Encodes the current(modular) object as JSON string
+#+
+#+ @code
+#+ LET thisresponse = getJSONEncoding()
+#+
+#+ @param NONE
+#+
+#+ @returnType STRING
+#+ @return : JSON encoded string
+
 FUNCTION getJSONEncoding()
     RETURN util.JSON.stringify(m_accounts)
 END FUNCTION
