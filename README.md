@@ -1,7 +1,7 @@
 # Simple Genero REST server/client sample
 
 ## Description
-
+UNDER CONSTRUCTION !
 Very simple 
 
 
